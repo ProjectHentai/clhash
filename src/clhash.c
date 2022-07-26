@@ -2,10 +2,12 @@
 
 #include <assert.h>
 #include <string.h>
-#include <x86intrin.h>
 
-#ifdef __WIN32
+#ifdef _WIN32
+#include <intrin.h>
 #define posix_memalign(p, a, s) (((*(p)) = _aligned_malloc((s), (a))), *(p) ?0 :errno)
+#else
+#include <x86intrin.h>
 #endif
 
 
