@@ -426,5 +426,12 @@ void * get_random_key_for_clhash(uint64_t seed1, uint64_t seed2) {
 
 }
 
+void free_key(void *key) {
+#ifdef _WIN32
+    _aligned_free(key);
+#else
+    free(key);
+#endif
+}
 
 
